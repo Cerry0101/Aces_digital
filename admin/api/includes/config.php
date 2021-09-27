@@ -11,7 +11,7 @@ ini_set("max_execution_time", "60");
 ini_set("max_input_time", "60");
 
 # define os parametros de conexão com o banco de dados
-define('DB_DSN','mysql:host=localhost:3306;dbname=habitacao');
+define('DB_DSN','mysql:host=localhost:3306;dbname=digital');
 define('DB_USER','root');
 define('DB_PASSWD','123456');
 
