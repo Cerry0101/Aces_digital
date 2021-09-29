@@ -2,36 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <!-- PWA -->
-    <meta name="theme-color" content="#02394B">
-    <link rel="shortcut icon" href="admin/img/logo.svg">
-    <link rel="manifest" href="admin/json/manifest.json">
-    <link rel="apple-touch-icon" href="admin/img/logo.svg">
-    <!-- <link rel="canonical" href="https://192.168.254.240/"> -->
-
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
-    <meta name="author" content="DITEL/SEGUP/PA">
-
     <title></title>
 
     <!-- Load Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="./admin/img/brand.svg">
-
-    <!-- Load Leaflet from CDN > -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css">
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-
-    <!-- Load Esri Leaflet from CDN > -->
-    <script src="https://unpkg.com/esri-leaflet@2.2.3/dist/esri-leaflet.js"></script>
-
-    <!-- Load Esri Leaflet Geocoder from CDN > -->
-    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.13/dist/esri-leaflet-geocoder.css">
-    <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.13/dist/esri-leaflet-geocoder.js"></script>
-
-    <!-- Load ChartJs from CDN > -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 
     <!-- Load JQuery Lib -->
     <script src="./admin/lib/jquery/jquery-3.3.1.min.js"></script>
@@ -159,20 +136,6 @@
     <!-- cores bootstrap -->
     <script src="/admin/js/coresBootstrap.js"></script>
 
-    <!-- PWA -->
-    <script>
-        if ('serviceWorer' in navigator) {
-            navigator.serviceWorker.register('lib/pwa/pwabuilder-sw.js')
-                .then(function () {
-                    console.log('service worker registered')
-                })
-                .catch(function () {
-                    console.log('service worker failed')
-                })
-        }
-    </script>
-    <!-- QrCode -->
-    <script src="admin/lib/qrcode/qrcode.min.js"></script>
     <script src='admin/js/modalidade.js'></script>
 </body>
 
