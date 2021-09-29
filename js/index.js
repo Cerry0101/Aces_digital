@@ -14,29 +14,25 @@ $('#profissao-conjuge-form').hide();
 
 
 
-var inputCPF = $('#cpf'); //Variavel inputCPF = $cpf
+
+var selectModalidadeId = $('#modalidade_id'); //Variavel selectModalidadeId = $modalidade_id
+
 
 selectModalidadeId.change(function () { //O change e evento é enviado a um elemento quando seu valor muda. Este evento está limitado a <input> elementos, <textarea> caixas e <select> elementos. Para caixas de seleção, caixas de seleção e botões de rádio, o evento é disparado imediatamente quando o usuário faz uma seleção com o mouse, mas para os outros tipos de elemento, o evento é adiado até que o elemento perca o foco.
     validarModalidadeCPF(); //nome da função
 });
 
-
-
-var selectModalidadeId = $('#modalidade_id'); //Variavel selectModalidadeId = $modalidade_id
-
-
+var inputCPF = $('#cpf'); //Variavel inputCPF = $cpf
 
 inputCPF.keyup(function () { //O evento onkeyup ocorre quando o usuário solta uma tecla (no teclado). não puxe direto da biblioteca.// metodo que puxa uma function.
     validarModalidadeCPF();
 });
 
-
-
 function validarModalidadeCPF() { //ativar a fucntion
     if (inputCPF.val().length >= 14 && selectModalidadeId.val() != null) {   //.val
+
+
         // A propriedade length de um objeto String contém o comprimento da string. length é uma propriedade read-only (somente leitura) de instâncias de string.
-
-
         //operadores relacionais.
         // >	maior que
         // >=	maior que ou igual a
