@@ -1,64 +1,57 @@
-$('alert').hide();
+//$ serve para delclarar variaveis jquery
+// var declarar variaveis com js (VAR torna a variavel global)
 
-$('#cpf').mask('999.999.999-99');
-$('buttons').hide();
+
+
+$('#cpf').mask('999.999.999-99'); //mask = mascara 
+$('buttons').hide();              //hide =esconder
 $('#titular-form').hide();
 $('#profissao-form').hide();
 $('#conjuge-form').hide();
 $('#moradia-form').hide();
 $('#profissao-conjuge-form').hide();
 
-var valor_renda_bruta = 0;
-// var municipios = [];
 
-// // $.ajax({
-// //     type: 'GET',
-// //     url: 'admin/json/municipios.json',
-// //     success: function (result) {
-// //         municipio = null;
-// //         $.each(result, function (index, element) {
-// //             if(municipio != element.municipio.nome) {
-// //                 municipios.push(element.municipio.nome);
-// //             }
-// //             municipio = element.municipio.nome;
-// //         });
-// //     }
-// // });
 
-// function alertar(classe, msg) {
-//     $('buttons').toggle();
-//     $('.modal-footer').attr('class', `modal-footer bg-${classe} text-light`);
-//     $('alert').text(msg).toggle();
-// }
-var inputCPF = $('#cpf');
-var selectModalidadeId = $('#modalidade_id');
 
-// //obter modalidade
-// $.ajax({
-//     type: 'GET',
-//     url: 'admin/api/modalidade/obterModalidades',
-//     success: function (result) {
-//         $.each(result, function (index, element) {
-//             selectModalidadeId.append($('<option>', { value: element.idmodalidade, text: element.modalidade }));
-//         });
-//         selectModalidadeId.val(null);
-//         selectModalidadeId.selectpicker();
-//     }
-// });
+var inputCPF = $('#cpf'); //Variavel inputCPF = $cpf
 
-function validarModalidadeCPF() {
-    if (inputCPF.val().length >= 14 && selectModalidadeId.val() != null) {
+selectModalidadeId.change(function () { //O change e evento é enviado a um elemento quando seu valor muda. Este evento está limitado a <input> elementos, <textarea> caixas e <select> elementos. Para caixas de seleção, caixas de seleção e botões de rádio, o evento é disparado imediatamente quando o usuário faz uma seleção com o mouse, mas para os outros tipos de elemento, o evento é adiado até que o elemento perca o foco.
+    validarModalidadeCPF(); //nome da função
+});
+
+
+
+var selectModalidadeId = $('#modalidade_id'); //Variavel selectModalidadeId = $modalidade_id
+
+
+
+inputCPF.keyup(function () { //O evento onkeyup ocorre quando o usuário solta uma tecla (no teclado). não puxe direto da biblioteca.// metodo que puxa uma function.
+    validarModalidadeCPF();
+});
+
+
+
+function validarModalidadeCPF() { //ativar a fucntion
+    if (inputCPF.val().length >= 14 && selectModalidadeId.val() != null) {   //.val
+        // A propriedade length de um objeto String contém o comprimento da string. length é uma propriedade read-only (somente leitura) de instâncias de string.
+
+
+        //operadores relacionais.
+        // >	maior que
+        // >=	maior que ou igual a
+        // <	menor que
+        // <=	menor que ou igual a
+        // ==	igual a
+        // !=	diferente de
+
+
+
+
         if (isValidCPF(inputCPF.val())) {
             //Mostrar dados do titular
             $('#titular-form').load('/partial/titular-form.html');
             $('#titular-form').show();
-            //Mostrar dados de moradia do titular
-            $('#moradia-form').load('/partial/moradia-form.html');
-            $('#moradia-form').show();
-            //Mostrar dados profissionais do titular
-            $('#profissao-form').load('/partial/profissao-form.html');
-            $('#profissao-form').show();
-            //Mostrar botoes
             $('buttons').show();
         } else {
             alert('CPF inválido');
@@ -67,53 +60,7 @@ function validarModalidadeCPF() {
             //Esconder tudo
             $('buttons').hide();
             $('#titular-form').hide();
-            $('#profissao-form').hide();
-            $('#conjuge-form').hide();
-            $('#moradia-form').hide();
-            $('#profissao-conjuge-form').hide();
         }
     }
 }
 
-inputCPF.keyup(function () {
-    validarModalidadeCPF();
-});
-
-selectModalidadeId.change(function () {
-    validarModalidadeCPF();
-});
-
-// $('form').submit(function () {
-//     var formData = $(this).serializeArray();
-//     if (valor_renda_bruta < 10000) {
-//         $.ajax({
-//             type: 'POST',
-//             url: 'admin/api/cadastro',
-//             data: formData,
-//             headers: {
-//                 Authorization: "Bearer " + sessionStorage.token
-//             },
-//             beforeSend: function () {
-//                 alertar('info', 'Aguarde um momento ...');
-//             },
-//             error: function (error) {
-//                 console.log(error);
-//             },
-//             success: function (result) {
-//                 console.log('Success: ' + result);
-//                 $('.modal-footer').attr('class', `modal-footer bg-success text-light`);
-//                 $('alert').text(`Cadastro efetuado com sucesso!`);
-//             },
-//             complete: function () {
-//                 setTimeout(function () {
-//                     $('alert').toggle();
-//                     $('buttons').toggle();
-//                     $('.modal-footer').attr('class', 'modal-footer');
-//                 }, 1000);
-//             }
-//         });
-//     } else {
-//         alert('Para receber a casa precisa ter renda bruta menor que R$ 10.000,00');
-//     }
-//     return false;
-// });
